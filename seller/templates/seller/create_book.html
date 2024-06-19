@@ -1,0 +1,16 @@
+{% extends 'manager/dashboard.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <h1>Create Book</h1>
+    <h1><i class="fa fa-book"></i></h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-success-outline-blue">Saqlash</button>
+
+    </form>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+
+<!-- Shop Detail Start -->
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-5 pb-5">
+            <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner border">
+                    <div class="carousel-item active">
+                        <img class="w-100 h-100" src="{{ book.image.url }}" alt="Image"
+                             style="max-width: 400px; max-height: 400px;">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7 pb-5">
+            <h3 class="font-weight-semi-bold">{{ book.title }}</h3>
+            <h3 class="font-weight-semi-bold mb-4">${{ book.price }}</h3>
+            <p class="mb-4">{{ book.description|truncatewords:20 }}</p>
+
+            <h5 class="font-weight-semi-bold mb-4">Sotuvda {{ book.quantity }}dona mavjud</h5>
+
+            <div class="d-flex align-items-center mb-4 pt-2">
+                <form method="post">
+                    {% csrf_token %}
+                    <hr>
+                    <div class="mt-2">
+                    Chegirma:<h6 class="badge badge-success rounded-pill d-inline">{{ book.discount }}</h6></div>
+<div class="mt-2">Kategoriya:<h6 class="badge badge-success rounded-pill d-inline">{{ book.category }}</h6></div>
+                    <div class="mt-2">Muallif:<h6 class="badge badge-success rounded-pill d-inline">{{ book.author }}</h6></div>
+
+                    <div class="mt-2">Chiqarilgan:<h6 class="badge badge-success rounded-pill d-inline">{{ book.date_created }}</h6></div>
+<hr>
+                    <div class="input-group quantity mr-3 mt-5" style="width: 130px;">
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary btn-minus">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <input type="text" name="cart" class="form-control bg-secondary text-center" value="1">
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary btn-plus">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Sotib
+                        olish
+                    </button>
+
+
+
+
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row px-xl-5">
+        <div class="col">
+            <div class="nav nav-tabs justify-content-center border-secondary mb-4">
+                <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Description</a>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="tab-pane-1">
+                    <h4 class="mb-3">Book Description</h4>
+                    <p>{{ book.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shop Detail End -->
+
+{% endblock main %}

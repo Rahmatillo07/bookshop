@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+<!--<link rel="stylesheet" href="{% static 'css/cart.css' %}">-->
+
+<div class="px-4 px-lg-0">
+  <!-- For demo purpose -->
+  <div class="container text-white py-5 text-center">
+    <h1 class="display-4">Bootstrap 4 shopping cart</h1>
+    <p class="lead mb-0">Build a fully structred shopping cart page using Bootstrap 4. </p>
+    <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white font-italic">
+            <u>Bootstrapious</u></a>
+    </p>
+  </div>
+  <!-- End -->
+
+  <div class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+
+          <!-- Shopping cart table -->
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="p-2 px-3 text-uppercase">Product</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Price</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Quantity</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Remove</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for cart in carts %}
+                <tr>
+                  <th scope="row" class="border-0">
+                    <div class="p-2">
+                      <img src="{{ cart.book.image.url }}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                      <div class="ml-3 d-inline-block align-middle">
+                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">{{ cart.book.title }}</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category:{{ cart.book.category }}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="border-0 align-middle"><strong>${{ cart.book.price }}</strong></td>
+                  <td class="border-0 align-middle"><strong>{{ cart.quantity }}</strong></td>
+                  <td class="border-0 align-middle"><a href="{% url 'manager:delete_cart' cart.id %}" class="btn btn-outline-danger">O'chirish<i class="fa fa-trash"></i></a></td>
+                </tr>
+              {% empty %}
+              <h1>Mavjud Emas</h1>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!-- End -->
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock main %}
