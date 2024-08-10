@@ -36,25 +36,13 @@
 
                     <div class="mt-2">Chiqarilgan:<h6 class="badge badge-success rounded-pill d-inline">{{ book.date_created }}</h6></div>
 <hr>
-                    <div class="input-group quantity mr-3 mt-5" style="width: 130px;">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                        <input type="text" name="cart" class="form-control bg-secondary text-center" value="1">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
 
 
-
+{% if request.user.is_authenticated %}
                     <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Sotib
                         olish
                     </button>
+                    {% endif %}
 
 
 

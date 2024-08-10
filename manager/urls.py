@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (home,category_by_books,BookDetail,LoginView,logout_view,RegisterView,ProfileView,EditProfileView,
-                    CartDetail,delete_cart,DashboardView,AboutView,EditUser,delete_user,SellersView,AllUsers,AdminsView)
+                    CartDetail,delete_cart,DashboardView,AboutView,EditUser,DeleteUser,SellersView,AllUsers,AdminsView)
 
 app_name = 'manager'
 
@@ -18,7 +18,7 @@ urlpatterns = [
     path('dashboard/',DashboardView.as_view(),name='dashboard'),
     path('about/',AboutView.as_view(),name='about'),
     path('edit-user/<int:user_id>/',EditUser.as_view(),name='edit_user'),
-    path('delete-user/<int:user_id>/',delete_user, name='delete_user'),
+    path('delete-user/<int:user_id>/',DeleteUser.as_view(), name='delete_user'),
     path('all-sellers/',SellersView.as_view(),name='all_sellers'),
     path('all-users/',AllUsers.as_view(),name='all_users'),
     path('all-admins/',AdminsView.as_view(),name='all_admins'),
